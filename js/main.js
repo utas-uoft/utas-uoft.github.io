@@ -31,8 +31,8 @@
   /* ── Links ────────────────────────────────────────────────
      Set these once and every reference on the page updates. */
   var LINKS = {
-    form:      '',                      // interest form URL
-    email:     'hello@example.com',     // contact address
+    form:      'https://docs.google.com/forms/d/e/1FAIpQLScoNAQEb1oxcmf0iBlPzaquhxd-byqO6hXU1oGvO8vaZvx2Hw/viewform',
+    email:     'utas.uoft@gmail.com',   // club address, not anyone's personal inbox
     instagram: 'https://instagram.com/utas.uoft',
     github:    ''                       // society GitHub org
   };
