@@ -56,14 +56,17 @@ a{ color:inherit; }
   letter-spacing:.22em; text-transform:uppercase;
   color:var(--blue); margin:0;
 }
-.label--light{ color:var(--sand); opacity:.8; }
+.label--light{ color:var(--sand); opacity:.95; }
 
 .display{
   font-family:var(--display);
-  font-weight:600;
+  font-weight:700;
+  /* Bodoni is a didone: left to itself the browser raises the optical-size
+     axis at display sizes and the hairlines thin out to nothing. Pin it. */
+  font-optical-sizing:none;
   font-size:clamp(2.4rem,1.3rem + 4.6vw,5.2rem);
-  line-height:1.02;
-  letter-spacing:-.02em;
+  line-height:1.04;
+  letter-spacing:-.015em;
   margin:0;
   text-wrap:balance;
 }
@@ -113,7 +116,9 @@ a{ color:inherit; }
 
 .hero__title{
   font-family:var(--display);
-  font-weight:500;
+  font-weight:600;
+  font-optical-sizing:none;
+  text-shadow:0 2px 40px rgba(0,26,98,.45);
   font-size:clamp(3.4rem,1.4rem + 9.6vw,10.5rem);
   line-height:.9; letter-spacing:-.035em;
   color:var(--sand-warm);
@@ -144,7 +149,7 @@ a{ color:inherit; }
 
 .plate-label{
   font-family:var(--mono); font-size:.68rem; letter-spacing:.2em;
-  text-transform:uppercase; color:var(--sand); opacity:.62; margin:0;
+  text-transform:uppercase; color:var(--sand); opacity:.85; margin:0;
 }
 .plate-label em{ font-style:italic; font-family:var(--display); text-transform:none; letter-spacing:.04em; font-size:.86rem; }
 .plate-label--hero{
@@ -195,7 +200,7 @@ a{ color:inherit; }
 }
 .plate__num{
   font-family:var(--display); font-style:italic;
-  font-size:1.5rem; line-height:1; opacity:.55;
+  font-size:1.6rem; line-height:1; opacity:.8;
 }
 
 .split{ display:grid; grid-template-columns:1fr; gap:clamp(1.8rem,4vw,4rem); }
@@ -212,7 +217,7 @@ a{ color:inherit; }
 .aside{
   margin:clamp(2.6rem,6vh,4.4rem) 0 0; max-width:62ch;
   font-size:clamp(1.02rem,.96rem + .35vw,1.22rem);
-  line-height:1.55; opacity:.86;
+  line-height:1.55; opacity:.95;
 }
 
 /* ── 02 compare ─────────────────────────────────────────────── */
@@ -225,12 +230,13 @@ a{ color:inherit; }
 .compare__col{ padding-top:1.6rem; border-top:1px solid rgba(228,216,192,.3); }
 .compare__col--ours{ border-top-color:var(--sand); }
 .compare__word{
-  font-family:var(--display); font-style:italic;
+  font-family:var(--display); font-style:italic; font-weight:600;
+  font-optical-sizing:none;
   font-size:clamp(1.9rem,1.4rem + 2vw,3.1rem); line-height:1.05;
   margin:.5rem 0 .9rem; color:var(--sand-warm);
 }
 .compare__col--ours .compare__word{ color:var(--white); }
-.compare__body{ margin:0; max-width:42ch; opacity:.82; }
+.compare__body{ margin:0; max-width:42ch; opacity:.94; }
 
 /* ── full-bleed plate ───────────────────────────────────────── */
 .plate-full{ margin:0; position:relative; background:var(--blue); }
@@ -261,7 +267,7 @@ a{ color:inherit; }
 
 .vert{ padding-top:1.5rem; border-top:2px solid var(--blue); }
 .vert__title{
-  font-family:var(--display); font-weight:600;
+  font-family:var(--display); font-weight:700; font-optical-sizing:none;
   font-size:clamp(1.8rem,1.3rem + 2vw,2.9rem); line-height:1.05;
   margin:.45rem 0 1rem; letter-spacing:-.015em;
 }
@@ -289,13 +295,13 @@ a{ color:inherit; }
   content:"0" counter(fw); position:absolute; left:0; top:.28em;
   font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; color:var(--blue);
 }
-.flywheel__note{ margin:1.8rem 0 0; max-width:64ch; font-size:.96rem; opacity:.78; }
+.flywheel__note{ margin:1.8rem 0 0; max-width:64ch; font-size:.96rem; opacity:.9; }
 
 /* ── 04 the track ───────────────────────────────────────────── */
 .track__head{ display:flex; flex-wrap:wrap; align-items:end; justify-content:space-between; gap:1.5rem; }
 .track__meta{
   font-family:var(--mono); font-size:.76rem; letter-spacing:.16em;
-  text-transform:uppercase; color:var(--sand); opacity:.72; margin:0 0 .6rem;
+  text-transform:uppercase; color:var(--sand); opacity:.9; margin:0 0 .6rem;
 }
 
 .weeks{ list-style:none; margin:clamp(2.6rem,6vh,4rem) 0 0; padding:0; counter-reset:wk; }
@@ -306,9 +312,10 @@ a{ color:inherit; }
 }
 .weeks li:first-child{ border-top:1px solid rgba(228,216,192,.22); }
 .weeks li:hover{ padding-left:.9rem; background:rgba(228,216,192,.06); }
-.weeks__n{ font-family:var(--mono); font-size:.78rem; letter-spacing:.14em; opacity:.6; }
+.weeks__n{ font-family:var(--mono); font-size:.78rem; letter-spacing:.14em; opacity:.82; }
 .weeks__t{
-  font-family:var(--display); font-size:clamp(1.2rem,1rem + 1.1vw,2rem);
+  font-family:var(--display); font-weight:500; font-optical-sizing:none;
+  font-size:clamp(1.2rem,1rem + 1.1vw,2rem);
   line-height:1.2; color:var(--sand-warm);
 }
 .weeks__t em{
@@ -378,11 +385,12 @@ a{ color:inherit; }
 .join .wrap{ position:relative; z-index:1; }
 .join .label{ display:block; }
 .join__title{
-  font-family:var(--display); font-weight:500; font-style:italic;
+  font-family:var(--display); font-weight:600; font-style:italic;
+  font-optical-sizing:none;
   font-size:clamp(2.6rem,1.4rem + 5.4vw,6rem); line-height:.98;
   letter-spacing:-.03em; margin:1.6rem 0 0; color:var(--sand-warm);
 }
-.join__lede{ max-width:46ch; margin:1.8rem auto 0; opacity:.88; }
+.join__lede{ max-width:46ch; margin:1.8rem auto 0; opacity:.95; }
 .join__alt{ margin:2.6rem 0 0; font-size:.92rem; opacity:.7; }
 .join__alt a{ color:var(--white); text-underline-offset:.25em; }
 
@@ -398,8 +406,8 @@ a{ color:inherit; }
 .foot__col .label{ color:var(--sand); opacity:.55; margin-bottom:.9rem; }
 .foot__col a{ display:block; text-decoration:none; opacity:.85; padding:.2rem 0; transition:opacity .3s; }
 .foot__col a:hover{ opacity:1; text-decoration:underline; text-underline-offset:.25em; }
-.foot__status{ margin:0; font-size:.88rem; line-height:1.55; opacity:.62; max-width:46ch; }
-.foot__land{ margin:2.2rem 0 0; font-size:.78rem; line-height:1.6; opacity:.4; max-width:70ch; }
+.foot__status{ margin:0; font-size:.88rem; line-height:1.55; opacity:.78; max-width:46ch; }
+.foot__land{ margin:2.2rem 0 0; font-size:.78rem; line-height:1.6; opacity:.6; max-width:70ch; }
 
 /* ═══════════════════════════════════ MOTION ═════════════════ */
 @keyframes rise{ from{ opacity:0; transform:translateY(26px) } to{ opacity:1; transform:none } }
