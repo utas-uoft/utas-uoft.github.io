@@ -8,32 +8,39 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="/css/styles.css">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
 <div class="grain" aria-hidden="true"></div>
 
+<nav class="nav" id="nav">
+  <a class="nav__mark" href="/">
+    <svg viewBox="240 240 600 600" width="26" height="26" aria-hidden="true">
+      <path d="M 662.1 394.4 A 190 190 0 1 1 573.0 352.9" fill="none" stroke="currentColor" stroke-width="74"/>
+      <polygon points="633.5,363.6 557.1,396.7 573.1,306.3" fill="currentColor"/>
+    </svg>
+    UTAS
+  </a>
+  <ul class="nav__tabs">
+    <li><a href="/" aria-current="page">Overview</a></li>
+    <li><a href="/track/">Track</a></li>
+    <li><a href="/research/">Research</a></li>
+    <li><a href="/join/">Join</a></li>
+  </ul>
+</nav>
+
 <!-- ══════════════════════════════════════════ HERO -->
 <header class="hero">
   <picture>
-    <source srcset="img/the-frontier.webp" type="image/webp">
-    <img class="hero__art" src="img/the-frontier.jpg" fetchpriority="high"
+    <source srcset="/img/the-frontier.webp" type="image/webp">
+    <img class="hero__art" src="/img/the-frontier.jpg" fetchpriority="high"
          alt="Riders crossing an open plain toward a distant vanishing point, drawn in ultramarine stipple on sand.">
   </picture>
   <div class="hero__scrim" aria-hidden="true"></div>
 
   <div class="hero__inner">
-    <div class="hero__mark" style="--d:0s">
-      <!-- Ring and arrowhead only. The tool node is illegible below ~80px. -->
-      <svg viewBox="240 240 600 600" width="44" height="44" aria-hidden="true">
-        <path d="M 662.1 394.4 A 190 190 0 1 1 573.0 352.9" fill="none" stroke="currentColor" stroke-width="74"/>
-        <polygon points="633.5,363.6 557.1,396.7 573.1,306.3" fill="currentColor"/>
-      </svg>
-      <span class="hero__wordmark">UTAS</span>
-    </div>
-
     <p class="label label--light" style="--d:.12s">University of Toronto &nbsp;·&nbsp; St. George</p>
 
     <h1 class="hero__title" style="--d:.2s">
@@ -46,7 +53,7 @@
     </p>
 
     <div class="hero__actions" style="--d:.44s">
-      <a class="btn btn--primary" href="#join">Register your interest</a>
+      <a class="btn btn--primary" href="/join/">Join us</a>
       <a class="btn btn--ghost" href="#what">What we do</a>
     </div>
   </div>
@@ -130,8 +137,8 @@
 <!-- ══════════════════════════════════════════ PLATE II -->
 <figure class="plate-full">
   <picture>
-    <source srcset="img/the-loop.webp" type="image/webp">
-    <img src="img/the-loop.jpg" loading="lazy"
+    <source srcset="/img/the-loop.webp" type="image/webp">
+    <img src="/img/the-loop.jpg" loading="lazy"
          alt="A lone figure standing at the centre of a vast spiral drawn in ultramarine stipple on sand.">
   </picture>
   <figcaption class="plate-full__cap">
@@ -151,35 +158,26 @@
 
     <h2 class="display reveal">Two halves, wired together.</h2>
 
-    <div class="verticals">
-      <article class="vert reveal" data-delay="1">
+    <div class="card-links">
+      <a class="card reveal" data-delay="1" href="/research/">
         <p class="label">Research</p>
-        <h3 class="vert__title">Agent&nbsp;Lab</h3>
+        <h3>Agent&nbsp;Lab</h3>
         <p>
-          Pods of three to five people work in six-week cycles. Each pod publishes
-          <strong>one artifact per cycle</strong> under the society's name: a writeup and a repo.
+          Pods of three to five people work in six-week cycles. Each pod publishes one
+          artifact per cycle under the society's name: a writeup and a repo.
         </p>
-        <p>
-          Year one runs replication, then teardown, then eval-building. After two completed
-          cycles, one pod moves to original work aimed at a real venue.
-        </p>
-        <p class="vert__rule">Publish, or the pod dissolves. We would rather ship something small
-          on time than plan something ambitious that never lands.</p>
-      </article>
+        <span class="card__go">How the pods work →</span>
+      </a>
 
-      <article class="vert reveal" data-delay="2">
+      <a class="card reveal" data-delay="2" href="/track/">
         <p class="label">Teaching</p>
-        <h3 class="vert__title">Agents&nbsp;in&nbsp;Practice</h3>
+        <h3>Agents&nbsp;in&nbsp;Practice</h3>
         <p>
-          An open lecture series, free and drop-in, organised <strong>by sector</strong>:
-          agents in law, in drug discovery, in finance operations, in public-service delivery.
+          A free lecture series organised by sector, plus the Agent Engineering Track: six
+          weeks, hands-on, ending in a demo night.
         </p>
-        <p>
-          Plus the Agent Engineering Track: six weeks, hands-on, capacity-limited, with a demo
-          night at the end.
-        </p>
-        <p class="vert__rule">No machine learning background required.</p>
-      </article>
+        <span class="card__go">See the curriculum →</span>
+      </a>
     </div>
 
     <div class="flywheel reveal" data-delay="3">
@@ -198,77 +196,11 @@
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════ 04 THE TRACK -->
-<section class="plate plate--blue" id="track">
-  <div class="wrap">
-    <div class="plate__head reveal">
-      <span class="plate__num">04</span>
-      <p class="label label--light">The curriculum</p>
-    </div>
-
-    <div class="track__head">
-      <h2 class="display display--light reveal">The Agent<br>Engineering Track</h2>
-      <p class="track__meta reveal" data-delay="1">
-        Six weeks &nbsp;·&nbsp; Winter&nbsp;2027 &nbsp;·&nbsp; Free &nbsp;·&nbsp; Capacity-limited
-      </p>
-    </div>
-
-    <ol class="weeks">
-      <li class="reveal" data-delay="1"><span class="weeks__n">01</span><span class="weeks__t">What an agent is: the loop, tools, context</span></li>
-      <li class="reveal" data-delay="2"><span class="weeks__n">02</span><span class="weeks__t">Tool design and MCP</span></li>
-      <li class="reveal" data-delay="3"><span class="weeks__n">03</span><span class="weeks__t">Context engineering and retrieval</span></li>
-      <li class="reveal weeks--hero" data-delay="4"><span class="weeks__n">04</span><span class="weeks__t">Evaluation<em>the week most courses skip</em></span></li>
-      <li class="reveal" data-delay="5"><span class="weeks__n">05</span><span class="weeks__t">Reliability, cost, latency, failure modes</span></li>
-      <li class="reveal" data-delay="6"><span class="weeks__n">06</span><span class="weeks__t">Capstone build and demo night</span></li>
-    </ol>
-
-    <p class="aside reveal" data-delay="7">
-      You leave with an agent you built, an eval suite that tells you whether it works, and a
-      demo you can show someone.
-    </p>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════ 05 ROLES -->
-<section class="plate plate--sand" id="roles">
-  <div class="wrap">
-    <div class="plate__head reveal">
-      <span class="plate__num">05</span>
-      <p class="label">Founding team</p>
-    </div>
-
-    <div class="split">
-      <h2 class="display reveal">We need seven people.</h2>
-      <div class="prose reveal" data-delay="1">
-        <p>
-          The University will not review a new society without a primary contact, two
-          administrative officers, and five general members. That paperwork is what stands
-          between this existing and not existing.
-        </p>
-        <p>
-          Three to five hours a week, starting January. <strong>VP&nbsp;Events matters most in
-          year one, and it needs no technical background.</strong>
-        </p>
-      </div>
-    </div>
-
-    <ul class="roles">
-      <li class="reveal" data-delay="1"><span>01</span>President</li>
-      <li class="reveal" data-delay="1"><span>02</span>VP Research</li>
-      <li class="reveal" data-delay="2"><span>03</span>VP Education</li>
-      <li class="reveal" data-delay="2"><span>04</span>VP Events &amp; Speakers</li>
-      <li class="reveal" data-delay="3"><span>05</span>VP Operations</li>
-      <li class="reveal" data-delay="3"><span>06</span>VP Communications</li>
-      <li class="reveal" data-delay="4"><span>07</span>Faculty Advisor <em>non-voting</em></li>
-    </ul>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════ 06 TIMELINE -->
+<!-- ══════════════════════════════════════════ 04 TIMELINE -->
 <section class="plate plate--sand plate--tight">
   <div class="wrap">
     <div class="plate__head reveal">
-      <span class="plate__num">06</span>
+      <span class="plate__num">04</span>
       <p class="label">The road to January</p>
     </div>
 
@@ -294,8 +226,8 @@
     </p>
     <a class="btn btn--big reveal" data-delay="3" href="#" data-form-link>Register your interest</a>
     <p class="join__alt reveal" data-delay="4">
-      Want a role instead? Email <a href="mailto:hello@example.com" data-email>hello@example.com</a>.
-      A no is fine, we just need to know who's in.
+      Want a role instead? <a href="/join/">Seven are open</a>, and several need no technical
+      background at all.
     </p>
   </div>
 </section>
@@ -314,6 +246,7 @@
         <p class="label">Elsewhere</p>
         <a href="#" data-instagram>Instagram</a>
         <a href="#" data-github>GitHub</a>
+        <a href="#" data-email>Email</a>
       </div>
       <div class="foot__col">
         <p class="label">Status</p>
@@ -333,6 +266,6 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>

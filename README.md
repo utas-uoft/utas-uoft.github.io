@@ -112,8 +112,32 @@ saving.
 ## Files
 
 ```
-index.html          the whole page
+index.html          Overview: the full pitch, hero to CTA
+track/index.html    The Agent Engineering Track
+research/index.html Agent Lab: how the pods work
+join/index.html     The seven roles, timeline, CTA
 css/styles.css      design system + layout
-js/main.js          scroll reveals, LINKS config
+js/main.js          scroll reveals, nav state, LINKS config
 img/                the two paintings, jpg + webp
 ```
+
+Four pages, four real URLs, so you can send someone straight to `/track/` or
+`/join/` instead of a link plus an instruction to scroll. Each folder is an
+`index.html`, which is what gives the clean paths on GitHub Pages.
+
+**The home page keeps the whole argument.** Cold traffic from Instagram or a
+Discord gets the pitch in order and hits the CTA at the end; the tabs are for
+people who already know what they want. Don't hollow out the Overview into a
+landing stub, or the persuasion sequence goes with it.
+
+**Asset paths are root-relative** (`/css/...`, `/img/...`) so every page shares
+them. That works because this is an org site served at the domain root. If the
+site ever moves into a subfolder, those all need rewriting.
+
+**The nav and footer are duplicated across the four files.** With no build step
+that's the tradeoff. Change one, change all four. The nav differs only in which
+link carries `aria-current="page"`.
+
+**The nav fills with blue once you scroll past the hero or banner** (`js/main.js`
+adds `.is-stuck`). Without it, sand-coloured nav text would land on a sand
+section and vanish. Every page therefore opens on a blue field.
