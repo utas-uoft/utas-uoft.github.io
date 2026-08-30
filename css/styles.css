@@ -76,7 +76,7 @@ a{ color:inherit; }
 /* ═══════════════════════════════════ HERO ═══════════════════ */
 .hero{
   position:relative;
-  min-height:100svh;
+  min-height:calc(100svh - var(--nav-h));
   display:flex; flex-direction:column; justify-content:center;
   padding:clamp(4rem,10vh,8rem) var(--gut) clamp(5rem,12vh,9rem);
   background:var(--blue);
@@ -85,7 +85,7 @@ a{ color:inherit; }
 /* <picture> would otherwise become a stray flex item in the hero
    and an inline box (with a baseline gap) in the full-bleed plate. */
 .hero > picture{ position:absolute; inset:0; }
-.plate-full picture{ display:block; }
+.plate-figure picture{ display:block; }
 
 .hero__art{
   position:absolute; inset:0; width:100%; height:100%;
@@ -194,7 +194,7 @@ a{ color:inherit; }
 
 .plate__head{
   display:flex; align-items:baseline; gap:1.4rem;
-  padding-bottom:1.4rem; margin-bottom:clamp(2.4rem,5vh,4rem);
+  padding-bottom:1.2rem; margin-bottom:clamp(1.5rem,3.4vh,2.6rem);
   border-bottom:1px solid currentColor;
   border-color:color-mix(in srgb, currentColor 22%, transparent);
 }
@@ -238,25 +238,23 @@ a{ color:inherit; }
 .compare__col--ours .compare__word{ color:var(--white); }
 .compare__body{ margin:0; max-width:42ch; opacity:.94; }
 
-/* ── full-bleed plate ───────────────────────────────────────── */
-.plate-full{ margin:0; position:relative; background:var(--blue); }
-.plate-full img{
-  width:100%; height:clamp(46vh,58vh,74vh); object-fit:cover; object-position:center 46%;
+/* ── plate: the painting shown whole, never cropped ─────────── */
+.plate-figure{
+  margin:0; background:var(--sand);
+  padding:clamp(2.5rem,7vh,5rem) 0 clamp(3rem,8vh,5.5rem);
 }
-/* Caption sits over the sky, never over the pale ground where sand-on-sand
-   would vanish. A soft top scrim guarantees it regardless of crop. */
-.plate-full::before{
-  content:""; position:absolute; inset:0 0 auto 0; height:52%;
-  background:linear-gradient(to bottom, rgba(0,34,122,.62), rgba(0,34,122,0));
-  pointer-events:none;
+.plate-figure img{ width:100%; height:auto; }
+.plate-figure figcaption{
+  display:grid; grid-template-columns:1fr; gap:.6rem;
+  margin-top:1.1rem;
 }
-.plate-full__cap{
-  position:absolute; left:var(--gut); top:clamp(1.5rem,5vh,3.2rem);
-  max-width:42ch; z-index:1;
+@media (min-width:820px){
+  .plate-figure figcaption{ grid-template-columns:auto 1fr; gap:2.4rem; align-items:baseline; }
 }
-.plate-full__cap p{
-  margin:.7rem 0 0; color:var(--sand-warm); font-size:.98rem; line-height:1.45;
+.plate-figure figcaption p{
+  margin:0; font-size:.98rem; line-height:1.5; opacity:.8; max-width:56ch;
 }
+.plate-label--dark{ color:var(--ink); opacity:.6; }
 
 /* ── 03 verticals ───────────────────────────────────────────── */
 .verticals{
@@ -304,7 +302,7 @@ a{ color:inherit; }
   text-transform:uppercase; color:var(--sand); opacity:.9; margin:0 0 .6rem;
 }
 
-.weeks{ list-style:none; margin:clamp(2.6rem,6vh,4rem) 0 0; padding:0; counter-reset:wk; }
+.weeks{ list-style:none; margin:clamp(1.4rem,3vh,2.2rem) 0 0; padding:0; counter-reset:wk; }
 .weeks li{
   display:grid; grid-template-columns:3.4rem 1fr; align-items:baseline; gap:1rem;
   padding:1.15rem 0; border-bottom:1px solid rgba(228,216,192,.22);
@@ -436,21 +434,13 @@ a{ color:inherit; }
 :root{ --nav-h:62px; }
 
 .nav{
-  position:fixed; top:0; left:0; right:0; z-index:100;
+  position:sticky; top:0; z-index:100;
   height:var(--nav-h);
   display:flex; align-items:center; gap:clamp(1rem,3vw,2.6rem);
   padding-inline:var(--gut);
-  color:var(--sand);
-  transition:background .4s var(--ease), border-color .4s var(--ease);
-  border-bottom:1px solid transparent;
+  background:var(--blue); color:var(--sand);
+  border-bottom:1px solid rgba(228,216,192,.22);
 }
-.nav::before{
-  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
-  background:linear-gradient(to bottom, rgba(0,26,98,.70), rgba(0,26,98,0));
-  transition:opacity .4s var(--ease);
-}
-.nav.is-stuck{ background:var(--blue); border-bottom-color:rgba(228,216,192,.22); }
-.nav.is-stuck::before{ opacity:0; }
 
 .nav__mark{
   display:flex; align-items:center; gap:.6rem; text-decoration:none;
@@ -486,19 +476,9 @@ a{ color:inherit; }
    so the nav always has a dark field behind it on load. */
 
 .banner{
-  position:relative; overflow:hidden;
   background:var(--blue); color:var(--sand-warm);
-  padding:calc(var(--nav-h) + clamp(4rem,11vh,7.5rem)) 0 clamp(3rem,8vh,5.5rem);
+  padding:clamp(2.6rem,7vh,4.6rem) 0 clamp(2.4rem,6vh,4rem);
 }
-.banner__art{
-  position:absolute; inset:0; width:100%; height:100%;
-  object-fit:cover; opacity:.55;
-}
-.banner__scrim{
-  position:absolute; inset:0;
-  background:linear-gradient(100deg, rgba(0,30,110,.94) 0%, rgba(0,40,150,.72) 42%, rgba(0,47,167,.30) 100%);
-}
-.banner .wrap{ position:relative; z-index:1; }
 .banner__title{
   font-family:var(--display); font-weight:700; font-optical-sizing:none;
   font-size:clamp(2.6rem,1.4rem + 5.2vw,6rem);
@@ -572,3 +552,7 @@ a{ color:inherit; }
 @media (max-width:360px){
   .nav__tabs a{ font-size:.6rem; letter-spacing:.09em; }
 }
+
+/* The first plate after a banner needs less air above it, or the
+   heading floats alone over an empty field on a laptop screen. */
+.banner + main > .plate:first-child{ padding-top:clamp(1.8rem,4vh,3rem); }

@@ -43,23 +43,11 @@
     else { a.remove(); }
   });
 
-  /* ── Nav state ────────────────────────────────────────────
-     The bar is transparent over the hero or banner, then fills
-     with blue once past it, so sand text never lands on sand. */
+  /* ── Nav ──────────────────────────────────────────────────
+     The bar is a solid sticky band, so it needs no scroll state.
+     This only keeps the current tab in view if the strip overflows. */
   var nav = document.getElementById('nav');
-  var top = document.querySelector('.hero, .banner');
   if (nav) {
-    var trigger = function () {
-      return top ? Math.max(top.offsetHeight - nav.offsetHeight, 10) : 10;
-    };
-    var update = function () {
-      nav.classList.toggle('is-stuck', window.scrollY > trigger());
-    };
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update);
-    update();
-
-    // If the tab strip ever does overflow, keep the current tab in view.
     var current = nav.querySelector('[aria-current="page"]');
     if (current && current.scrollIntoView) {
       current.scrollIntoView({ block: 'nearest', inline: 'nearest' });
@@ -67,7 +55,9 @@
   }
 
   /* ── Scroll-triggered reveals ─────────────────────────────
-     data-delay staggers siblings within a section. */
+     data-delay staggers siblings within a section. The root box is
+     extended past the fold so anything near it reveals immediately,
+     rather than a page opening on a heading and an empty field. */
   var reveals = document.querySelectorAll('.reveal');
 
   each('.reveal', function (el) {
@@ -86,7 +76,7 @@
       entry.target.classList.add('in');
       io.unobserve(entry.target);
     });
-  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+  }, { rootMargin: '0px 0px 8% 0px', threshold: 0 });
 
   Array.prototype.forEach.call(reveals, function (el) { io.observe(el); });
 })();

@@ -138,6 +138,17 @@ site ever moves into a subfolder, those all need rewriting.
 that's the tradeoff. Change one, change all four. The nav differs only in which
 link carries `aria-current="page"`.
 
-**The nav fills with blue once you scroll past the hero or banner** (`js/main.js`
-adds `.is-stuck`). Without it, sand-coloured nav text would land on a sand
-section and vanish. Every page therefore opens on a blue field.
+**The nav is a solid sticky band in normal flow**, so the hero starts below it
+rather than under it. It never goes transparent, which is why it stays legible
+over every section.
+
+**Paintings are shown whole, never cropped.** `.plate-figure` renders each one
+at its natural aspect inside the content column with a caption beneath, the way
+a plate sits in a book. The hero is the one exception: it is a full-bleed
+background and crops by design.
+
+**Watch the fold on inner pages.** Scroll reveals plus a tall banner can leave a
+page opening on nothing but a heading and an empty field. Two things prevent it:
+the first plate after a banner has reduced top padding, and the reveal observer
+uses a *positive* bottom `rootMargin` so anything near the fold reveals
+immediately. If you add a page and it looks blank on load, that is the cause.
