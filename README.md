@@ -113,7 +113,7 @@ saving.
 
 ```
 index.html          Overview: the full pitch, hero to CTA
-track/index.html    The Agent Engineering Track
+teaching/index.html Agents in Practice: lectures and workshops
 research/index.html Agent Lab: how the pods work
 join/index.html     The seven roles, timeline, CTA
 css/styles.css      design system + layout
@@ -121,7 +121,7 @@ js/main.js          scroll reveals, nav state, LINKS config
 img/                the two paintings, jpg + webp
 ```
 
-Four pages, four real URLs, so you can send someone straight to `/track/` or
+Four pages, four real URLs, so you can send someone straight to `/teaching/` or
 `/join/` instead of a link plus an instruction to scroll. Each folder is an
 `index.html`, which is what gives the clean paths on GitHub Pages.
 
