@@ -186,6 +186,63 @@ a{ color:inherit; }
 }
 .btn--big:hover{ background:var(--white); border-color:var(--white); transform:translateY(-3px); }
 
+/* ═════════════════════ SKETCH MODE (drawably) ════════════════
+   Experimental. Every rule below only fires once JS has attached the pen, so
+   removing the module restores the printed design with no CSS changes needed.
+
+   drawably draws its own outline and does its own hover lift and press sink —
+   ours have to get out of the way or the two double up. Colour is deliberately
+   not set here: the library resolves it from the custom properties we pass in
+   (stroke for outline, paper for solid), and overriding it blanks solid out. */
+.btn.is-sketched,
+.btn.is-sketched:hover{
+  background:transparent; border-color:transparent;
+  transform:none; transition:none;
+  font-family:var(--mono);   /* drawably's label defaults to Inter; keep ours */
+}
+
+/* The small "next" links become buttons too, so a page has one button
+   language instead of two. They need the padding a bare link never had. */
+.next a.is-sketched{ padding:.85em 1.4em; }
+.next a.is-sketched:hover{ text-decoration:none; }
+
+/* Drawn rules replace printed ones. The drawn line is a real element, so the
+   gap that used to be the host's own margin moves onto it — otherwise the
+   rule and the thing it separates drift apart. */
+.sketch-rule{ display:block; width:100%; height:4px; }
+
+.sketch-rule--head{ margin-bottom:clamp(1.5rem,3.4vh,2.6rem); }
+.plate__head.is-sketched{ border-bottom-color:transparent; margin-bottom:0; }
+
+.sketch-rule--next{ margin-top:clamp(3rem,8vh,5rem); margin-bottom:1.6rem; }
+.next.is-sketched{ border-top-color:transparent; margin-top:0; padding-top:0; }
+
+.sketch-rule--card{ margin-bottom:1.6rem; }
+.card.is-sketched,
+.card.is-sketched:hover{ border-top-color:transparent; padding-top:0; }
+.compare__col.is-sketched,
+.compare__col--ours.is-sketched,
+.vert.is-sketched{ border-top-color:transparent; padding-top:0; }
+
+/* List rows. The row is a grid or a flex line, so the rule has to be told to
+   span the whole width instead of becoming another cell, and pulled down by
+   the row's own bottom padding to land where the border used to sit. */
+.weeks li > .sketch-rule{ grid-column:1/-1; }
+.roles li{ flex-wrap:wrap; }
+.roles li > .sketch-rule{ flex-basis:100%; }
+
+.weeks li.is-sketched{ border-bottom-color:transparent; border-top-color:transparent; }
+.roles li.is-sketched{ border-bottom-color:transparent; }
+.roles.is-sketched{ border-top-color:transparent; }
+
+.weeks li > .sketch-rule--row{ margin-bottom:-1.15rem; }
+.roles li > .sketch-rule--row{ margin-bottom:-1.05rem; }
+.weeks li > .sketch-rule--row-top{ margin-top:-1.15rem; margin-bottom:1.15rem; }
+.roles li > .sketch-rule--row-top{ margin-top:-1.05rem; margin-bottom:1.05rem; }
+
+.foot__grid.is-sketched{ border-bottom-color:transparent; }
+.foot__grid > .sketch-rule--foot{ grid-column:1/-1; margin-bottom:-2.5rem; }
+
 /* ═══════════════════════════════════ PLATES ═════════════════ */
 .plate{ padding:clamp(5rem,13vh,10rem) 0; position:relative; }
 .plate--sand{ background:var(--sand); }

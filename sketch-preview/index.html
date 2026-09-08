@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Sketch preview · UTAS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<link rel="stylesheet" href="/vendor/drawably/style.css">
+<style>
+  .row{ display:flex; flex-wrap:wrap; gap:2.4rem 3rem; align-items:center; margin-top:2rem; }
+  .row .btn{ margin-top:0; }
+  .cap{ font-family:var(--mono); font-size:.68rem; letter-spacing:.16em;
+        text-transform:uppercase; opacity:.65; display:block; margin-bottom:.7rem; }
+  .cell{ min-width:230px; }
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<header class="banner">
+  <div class="wrap">
+    <p class="label label--light">Internal &nbsp;·&nbsp; Not linked from the site</p>
+    <h1 class="banner__title">Sketch<br>preview</h1>
+    <p class="banner__lede">
+      The same CTA in every drawably variant, on both grounds, next to the button the
+      site ships today. Reload for a fresh sketch each time.
+    </p>
+  </div>
+</header>
+
+<main>
+
+<section class="plate plate--blue">
+  <div class="wrap">
+    <div class="plate__head">
+      <span class="plate__num">01</span>
+      <p class="label label--light">On blue &mdash; where both real CTAs live</p>
+    </div>
+    <div class="row">
+      <div class="cell"><span class="cap">Current</span>
+        <a class="btn btn--big" href="#">Register your interest</a></div>
+      <div class="cell"><span class="cap">Outline</span>
+        <a class="btn btn--big" href="#" data-demo="outline">Register your interest</a></div>
+      <div class="cell"><span class="cap">Solid</span>
+        <a class="btn btn--big" href="#" data-demo="solid">Register your interest</a></div>
+      <div class="cell"><span class="cap">Scribble</span>
+        <a class="btn btn--big" href="#" data-demo="scribble">Register your interest</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="plate plate--sand">
+  <div class="wrap">
+    <div class="plate__head">
+      <span class="plate__num">02</span>
+      <p class="label">On sand</p>
+    </div>
+    <div class="row">
+      <div class="cell"><span class="cap">Outline</span>
+        <a class="btn btn--big" href="#" data-demo="outline">Register your interest</a></div>
+      <div class="cell"><span class="cap">Solid</span>
+        <a class="btn btn--big" href="#" data-demo="solid">Register your interest</a></div>
+      <div class="cell"><span class="cap">Scribble</span>
+        <a class="btn btn--big" href="#" data-demo="scribble">Register your interest</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="plate plate--sand">
+  <div class="wrap">
+    <div class="plate__head">
+      <span class="plate__num">03</span>
+      <p class="label">Text decorations &mdash; the quieter option</p>
+    </div>
+    <div class="split">
+      <h2 class="display">Systems, <span id="dec-circle">not models</span>.</h2>
+      <div class="prose">
+        <p>
+          These attach to inline text rather than controls, so they annotate the
+          editorial layout instead of competing with it. Nothing here is wired into
+          the live site &mdash; it is just what the option looks like.
+        </p>
+        <p>
+          The workshops cover <span id="dec-under">evaluation</span>, which is the part
+          <span id="dec-high">most courses skip</span>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script type="module">
+import { drawablyButton, drawablyUnderline, drawablyHighlight, drawablyCircle }
+  from '/vendor/drawably/index.js';
+
+const root = getComputedStyle(document.documentElement);
+const tok = (n) => root.getPropertyValue(n).trim();
+const SAND = tok('--sand'), BLUE = tok('--blue');
+
+document.querySelectorAll('[data-demo]').forEach((el) => {
+  const onBlue = !!el.closest('.plate--blue');
+  const ink = onBlue ? SAND : BLUE;
+  drawablyButton(el, {
+    variant: el.getAttribute('data-demo'),
+    stroke: ink, fill: ink, paper: onBlue ? BLUE : SAND, width: 2
+  });
+  el.classList.add('is-sketched');
+});
+
+drawablyCircle(document.getElementById('dec-circle'), { stroke: BLUE });
+drawablyUnderline(document.getElementById('dec-under'), { stroke: BLUE });
+drawablyHighlight(document.getElementById('dec-high'), { fill: BLUE });
+</script>
+</body>
+</html>
