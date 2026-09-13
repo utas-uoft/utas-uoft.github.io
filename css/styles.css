@@ -13,7 +13,10 @@
   --ink:       #14161A;
   --white:     #FFFFFF;
 
-  --display: "Bodoni Moda", "Didot", Georgia, serif;
+  /* SKETCH TEST: pen face in place of the didone. Fallback is the body sans,
+     not a cursive — Drawably Pen has only 83 glyphs, so the middots and arrows
+     fall through per-glyph and a neutral sans is the least jarring landing. */
+  --display: "Drawably Pen", "Archivo", "Helvetica Neue", sans-serif;
   --body:    "Archivo", "Helvetica Neue", sans-serif;
   --mono:    "IBM Plex Mono", ui-monospace, monospace;
 
@@ -613,3 +616,60 @@ a{ color:inherit; }
 /* The first plate after a banner needs less air above it, or the
    heading floats alone over an empty field on a laptop screen. */
 .banner + main > .plate:first-child{ padding-top:clamp(1.8rem,4vh,3rem); }
+
+/* ═════════════ PEN TYPOGRAPHY (sketch test) ═══════════════════
+   Drawably Pen is a single weight with no true italic. Every faux-bold and
+   faux-italic in the rules above was tuned for Bodoni's real cuts; synthesised
+   on a pen face they thicken the strokes into mush. Switch them all off in one
+   place so the experiment is a single block to delete.
+
+   Tracking goes back to zero too: the negative letter-spacing existed to close
+   up didone sidebearings that this face does not have. */
+.display,
+.display em,
+.hero__title,
+.hero__title em,
+.banner__title,
+.plate-label em,
+.plate__num,
+.prose__pull,
+.compare__word,
+.vert__title,
+.flywheel__steps li,
+.weeks__t,
+.weeks--hero .weeks__t,
+.roles li,
+.timeline__what,
+.timeline--now .timeline__what,
+.join__title,
+.card h3{
+  font-weight:400;
+  font-style:normal;
+  font-optical-sizing:auto;
+  letter-spacing:0;
+}
+
+/* The pen face is much wider than the didone at the same size — its letters
+   are round and loosely fitted where Bodoni is narrow and tightly set. Held at
+   the old size the headings gained two lines each, so they come down, not up. */
+.display{ font-size:clamp(2rem,1.1rem + 3.8vw,4.2rem); line-height:1.14; }
+.hero__title,
+.banner__title{ line-height:1.1; }
+.card h3{ line-height:1.12; }
+
+/* Labels, buttons and the nav are the rest of the "furniture": leaving them
+   in tracked mono next to a hand-drawn heading is the split that read as
+   wrong in the first place. */
+.label,
+.btn,
+.next a,
+.card__go,
+.nav__mark,
+.nav__tabs a{
+  font-family:var(--display);
+  letter-spacing:.08em;
+  font-weight:400;
+}
+.btn.is-sketched,
+.btn.is-sketched:hover,
+.next a.is-sketched{ font-family:var(--display); }
