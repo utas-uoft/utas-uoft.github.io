@@ -1,4 +1,4 @@
-# UTAS — website
+# UTASC — website
 
 A static one-page site. No build step, no dependencies, no framework. Open it and it works.
 

@@ -1,4 +1,4 @@
-/* UTAS — scroll reveals, nav state, and link configuration */
+/* UTASC — scroll reveals, nav state, and link configuration */
 
 (function () {
   'use strict';
