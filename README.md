@@ -88,7 +88,7 @@ Don't remove that inline script without also removing `.js` from the reveal sele
 **The status disclaimer in the footer should stay until recognition comes through.** U of T's
 policy requires a group's name and representations to make clear it's a student group, and
 the right to use "University of Toronto" in the name comes *with* recognition. The footer
-currently states plainly that this is an independent initiative, not yet recognised, and does
+states plainly that the group is recognised, that recognition is not endorsement, and does
 not represent the University. Removing that before November is the one edit that could
 actually cause a problem.
 
