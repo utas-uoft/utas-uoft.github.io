@@ -14,7 +14,7 @@ var LINKS = {
   form:      '',                            // ← interest form URL. Until this is set,
                                             //   both CTA buttons stay inert.
   email:     'hello@example.com',           // ← real contact address
-  instagram: 'https://instagram.com/utas.uoft',
+  instagram: 'https://instagram.com/utasc.uoft',
   github:    ''                             // ← empty removes the footer link entirely
 };
 ```

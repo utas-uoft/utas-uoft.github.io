@@ -8,7 +8,7 @@
   var LINKS = {
     form:      'https://docs.google.com/forms/d/e/1FAIpQLScoNAQEb1oxcmf0iBlPzaquhxd-byqO6hXU1oGvO8vaZvx2Hw/viewform',
     email:     'utas.uoft@gmail.com',   // club address, not anyone's personal inbox
-    instagram: 'https://instagram.com/utas.uoft',
+    instagram: 'https://instagram.com/utasc.uoft',
     github:    ''                       // empty removes the footer link
   };
 
