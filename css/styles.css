@@ -241,7 +241,15 @@ a{ color:inherit; }
 /* ── plate: the painting shown whole, never cropped ─────────── */
 .plate-figure{
   margin:0; background:var(--sand);
-  padding:clamp(2.5rem,7vh,5rem) 0 clamp(3rem,8vh,5.5rem);
+  padding:0 0 clamp(3rem,8vh,5.5rem);
+}
+/* The painting runs edge to edge. Its top dissolves into the blue plate
+   above it, its bottom into the sand below. */
+.plate-figure__art{ position:relative; }
+.plate-figure__art::before{
+  content:""; position:absolute; left:0; right:0; top:0; height:26%;
+  background:linear-gradient(to bottom,var(--blue),rgba(0,47,167,0));
+  pointer-events:none; z-index:1;
 }
 .plate-figure img{
   width:100%; height:auto;
@@ -251,7 +259,7 @@ a{ color:inherit; }
 }
 .plate-figure figcaption{
   display:grid; grid-template-columns:1fr; gap:.6rem;
-  margin-top:1.1rem;
+  margin-top:.4rem;
 }
 @media (min-width:820px){
   .plate-figure figcaption{ grid-template-columns:auto 1fr; gap:2.4rem; align-items:baseline; }
