@@ -243,7 +243,12 @@ a{ color:inherit; }
   margin:0; background:var(--sand);
   padding:clamp(2.5rem,7vh,5rem) 0 clamp(3rem,8vh,5.5rem);
 }
-.plate-figure img{ width:100%; height:auto; }
+.plate-figure img{
+  width:100%; height:auto;
+  /* Dissolve the lower edge into the sand so the plate is not cut off. */
+  -webkit-mask-image:linear-gradient(to bottom,#000 58%,transparent 100%);
+          mask-image:linear-gradient(to bottom,#000 58%,transparent 100%);
+}
 .plate-figure figcaption{
   display:grid; grid-template-columns:1fr; gap:.6rem;
   margin-top:1.1rem;
